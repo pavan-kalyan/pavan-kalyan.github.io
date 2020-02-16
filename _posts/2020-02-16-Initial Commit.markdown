@@ -24,6 +24,7 @@ As someone who has benefitted greatly from all the free resources and knowledge 
 Ok, so what will you talk about?
 
 Anything that interests me really, my current interests are Linux, Open Source contribution, Java, competitive coding, Go, etc.
+
 Maybe steps to set something up or a breakdown of a notorious bug I came across and how to solve it or
 maybe a getting started guide on a new language or framework.
 
