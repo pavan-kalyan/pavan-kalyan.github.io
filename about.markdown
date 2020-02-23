@@ -10,4 +10,4 @@ I'm currently interning at [Hevo Data](https://hevodata.com/). I've previously i
 
 I am passionate about open source software and try to contribute regularly. Here are a few I have previously contributed to [Trickster](https://github.com/Comcast/trickster), [GoCity](https://github.com/rodrigo-brito/gocity), etc.
 
-I enjoy playing video games and reading science fiction and fantasy books. My favorite sci-fi author is [Isaac Asimov](http://www.asimovonline.com/asimov_home_page.html) and favorite fantasy author is [Brandon Sanderson](https://www.brandonsanderson.com/).
+I enjoy playing video games and reading science fiction and fantasy books. My favorite sci-fi author is [Isaac Asimov](http://www.asimovonline.com/asimov_home_page.html) and my favorite fantasy author is [Brandon Sanderson](https://www.brandonsanderson.com/).
