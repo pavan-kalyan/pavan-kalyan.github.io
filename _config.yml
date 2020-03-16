@@ -39,7 +39,9 @@ stackoverflow:
 
 # Build settings
 theme: minima
+url: "https://pavan-kalyan.github.io" # the base hostname & protocol for your site
 plugins:
+  - jekyll-sitemap
   - jekyll-feed
 # Exclude from processing.
 # The following items will not be processed, by default.
