@@ -3,7 +3,7 @@ layout: post
 title:  "Initial Commit"
 excerpt: "My first post in which I talk about why I'm starting a blog"
 date:   2020-02-16 15:52:08 +0530
-author: Pavan Kalyan
+author: Pavan Kalyan Damalapati
 ---
 
 This is the first post in hopefully a long list of posts about various things I learn about in the world of computing.

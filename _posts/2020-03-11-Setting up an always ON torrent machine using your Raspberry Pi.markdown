@@ -3,7 +3,7 @@ layout: post
 title:  "Setting up a 24/7 torrent machine using your Raspberry Pi"
 excerpt: "Use your RPI to download torrents for you in the background."
 date:   2020-03-11 1:00:00 +0530 
-author: Pavan Kalyan
+author: Pavan Kalyan Damalapati
 ---
 
 This is a step-by-step guide to setup an always on torrent machine.
