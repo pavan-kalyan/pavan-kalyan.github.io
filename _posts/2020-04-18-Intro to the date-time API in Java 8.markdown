@@ -11,11 +11,11 @@ This post will cover some of the more frequently used Classes in Java 8's date t
 ### Introduction
 In college, I learned about the Date class in Java, but in the Industry Java 8 is widely utilized and Java 8 does away with the outdated Date and Calendar class, and introduces a whole new set of classes which are thread-safe, better equipped to handle time-zones and easier to understand.
 
-For my work at Hevo, I needed to utilize regular conversion of date time objects with different time-zones. I noticed myself regularly googling common conversions of different Java time classes and common doubts about the `java.time` package, and thought it would be worth it to spend a few hours to learn the proper usage of the `java.time` package.
+For my work at Hevo, I needed to utilize regular conversion of date-time objects with different time-zones. I noticed myself regularly googling common conversions of different Java time classes and common doubts about the `java.time` package, and thought it would be worth it to spend a few hours to learn the proper usage of the `java.time` package.
 
 ### Instant (java.time.Instant)
 
-Consider a timeline, with nanosecond precision starting from the standard Java epoch (1970-01-01). An Instant represents a point on this timeline. A positive value of an Instant means it lies on right side of the standard Java epoch and negative value means that it lies on the left side of the standard Java epoch. An Instant is always in UTC, and does not contain any information about timezones.
+Consider a timeline, with nanosecond precision starting from the standard Java epoch (1970-01-01). An Instant represents a point on this timeline. A positive value of an Instant means it lies on the right side of the standard Java epoch and a negative value means that it lies on the left side of the standard Java epoch. An Instant is always in UTC and does not contain any information about timezones.
 
 Some important ways to create Instants
 
@@ -32,7 +32,7 @@ instant = Instant.ofEpochMilli(1587160334000L);
 instant = Instant.parse("2007-12-03T10:15:30.00Z");
 ~~~
 
-Instants also provides methods for calculations.
+Instants also provide methods for calculations.
 
 ~~~ java
 Instant instant = Instant.now().plus(5, ChronoUnit.DAYS);

@@ -95,7 +95,7 @@ sudo mkdir /media/pi/usbhdd
 ~~~ shell 
 sudo fdisk -l
 ~~~
-This will return the list of drives. Identify your USB or HDD using the size and the filesystem specified. Make note of the path under the ```Device```. It is usually in the form of ```/dev/sda```, ```/dev/sdb```, etc. In my case it's /dev/sda5
+This will return the list of drives. Identify your USB or HDD using the size and the filesystem specified. Make note of the path under the ```Device```. It is usually in the form of ```/dev/sda```, ```/dev/sdb```, etc. In my case, it's /dev/sda5
 4. Run the following after replacing it with the path noted above.
 ~~~ shell 
 sudo lsblk -l /dev/sda5
@@ -115,10 +115,10 @@ It should look something like this
 UUID=db6882b8-8bb3-4c2f-9af7-e5e431bee600 /media/pi/usbhdd auto defaults,nofail 0 0
 ~~~
 The ```nofail``` tells the system not to fail the entire bootup process if it can't find the corresponding external disk.
-Save the file and close.
+Save the file and close it.
 6. Reboot the system and hope everything works out. If the system fails to boot It's probably related to the `/etc/fstab` file. In which case you can load the SD card of the RPI on another system and manually edit the ```/etc/fstab``` back to how it was.
-7. After a successfull reboot open up Deluge WebUI and change the settings for the download location to the new mount dir made. In my case it's ```/media/pi/usbhdd```.
+7. After a successful reboot open up Deluge WebUI and change the settings for the download location to the new mount dir made. In my case, it's ```/media/pi/usbhdd```.
 
 That's it. You now have a 24/7 torrent machine always downloading data in the background at a very low power cost.
-Next you should setup a VPN, so that your torrent downloads can not be tracked by your ISP or any other entity.
-You should also try [Dataplicity](https://www.dataplicity.com/) which is what I use to access my rpi (and torrent client) from anywhere in the world with an internet connection.
+Next, you should set up a VPN, so that your torrent downloads can not be tracked by your ISP or any other entity.
+You should also try [Dataplicity](https://www.dataplicity.com/) which is what I use to access my RPI (and torrent client) from anywhere in the world with an internet connection.
