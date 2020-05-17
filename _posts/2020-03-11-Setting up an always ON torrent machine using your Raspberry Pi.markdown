@@ -122,3 +122,5 @@ Save the file and close it.
 That's it. You now have a 24/7 torrent machine always downloading data in the background at a very low power cost.
 Next, you should set up a VPN, so that your torrent downloads can not be tracked by your ISP or any other entity.
 You should also try [Dataplicity](https://www.dataplicity.com/) which is what I use to access my RPI (and torrent client) from anywhere in the world with an internet connection.
+
+If there are any issues with the content, please contact me by email(below) and let me know.

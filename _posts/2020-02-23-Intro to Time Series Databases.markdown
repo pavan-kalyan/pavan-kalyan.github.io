@@ -47,3 +47,4 @@ Here are some of the most widely used time series databases:
 - [https://www.influxdata.com/time-series-database/](https://www.influxdata.com/time-series-database/)
 - [https://griddb.net/en/blog/practical-introduction-to-time-series-databases-and-time-series-data/](https://griddb.net/en/blog/practical-introduction-to-time-series-databases-and-time-series-data/)
 
+If there are any issues with the content, please contact me by email(below) and let me know.
