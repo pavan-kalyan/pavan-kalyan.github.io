@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: My Blog
+title: Pavan Kalyan's Blog
 email: damalapati.pavan@gmail.com
 author: Pavan Kalyan Damalapati
 show_excerpts: true
