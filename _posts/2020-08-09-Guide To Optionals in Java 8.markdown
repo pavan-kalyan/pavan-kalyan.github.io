@@ -169,3 +169,10 @@ if (obj1.getObj2() != null) {
 	}
 }
 ```
+
+**Note**: Avoid passing Optional objects as a parameter to a function, it pushes the burden of checking to the function.
+
+### References
+
+- [Article regarding the problems with null](https://dzone.com/articles/the-worst-mistake-of-computer-science-1)
+- [The answers in this StackOverflow question](https://stackoverflow.com/questions/23454952/uses-for-optional)
