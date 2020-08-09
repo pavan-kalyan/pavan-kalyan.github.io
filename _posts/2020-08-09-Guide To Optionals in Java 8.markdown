@@ -26,14 +26,16 @@ Simply put it is a container object which tells you whether or not it currently 
 ### How to create an Optional object.
 There are three main ways to create an Optional object
 
-```Java
+~~~Java
 //Can be used to indicate a non-value
 Optional.empty()
 //wraps any non-null object in an optional container
 Optional.of()
 //wraps any object in an optional container
 Optional.ofNullable()
-```
+~~~
+
+
 Let's see how useful each of these are when dealing with nulls.
 
 #### Use Cases
@@ -41,7 +43,7 @@ Let's see how useful each of these are when dealing with nulls.
 #### To Catch NullPointerException early
 
 The following code demonstrates that it's difficult to know exactly when an object was made null, since the NullPointerException can happen much later.
-```Java
+~~~Java
 //Address Constructor example
 public class Address {
 	private ObjectThatCanBeNull objectThatCanBeNull;
@@ -58,11 +60,12 @@ Address address = new Address(getObjectWhichCanBeNull);
 
 //The following line throws a NullPointerException, and to debug it, requires a lot of backtracking.
 System.out.println(address.getObjectThatCouldBeNull().getValue());
-```
+~~~
+
 
 This issue can be caught early, if we use Optionals
 
-```Java
+~~~Java
 public class Address {
 	private ObjectThatCanBeNull objectThatCanBeNull;
 
@@ -78,13 +81,14 @@ Address address = new Address(getObjectWhichCanBeNull);
 // many lines of code later
 
 System.out.println(address.getObjectThatCouldBeNull().getValue());
-```
+~~~
+
 
 #### To Clearly Indicate That A Function Can Return A Non-value
 
 Sometimes returning a null is a valid return value for a function. The calling function handles a null (absence of value) differently.
 **Note**: using null as a valid return value should be avoided if possible.
-```Java
+~~~Java
 Address locateAddress(Input input) {
 	if (input.isOfTypeAddress()) {
 		return input.getAddress();
@@ -97,11 +101,11 @@ void newFunction(Input input) {
 	// throws a NullPointerException
 	locateAddress(input).displayAddress();
 }
-```
+~~~
 
 These kinds of situations can be avoided by using Optionals as it makes it explicitly clear that locateAddress() can return an absence of value;
 
-```Java
+~~~Java
 Optional<Address> locateAddress(Input input) {
 	if (input.isOfTypeAddress()) {
 		return input.getAddress();
@@ -119,10 +123,12 @@ void newFunction(Input input) {
 		System.out.println("Address does not exist for this user, please contact Support.");
 	}
 }
-```
+~~~
+
+
 ### Different Methods available in Optionals.java
 
-```Java
+~~~Java
 // simply returns the object contained in the Optional
 T get();
 
@@ -150,14 +156,14 @@ If a value is present, apply the provided mapping function to it,
 
 //similar to map but for flattening it
 <U> Optional<U> flatMap(Function<? super T, Optional<U>> mapper) {
-```
+~~~
 
 #### Use Cases
 
 #### Handle long chain of null calls in a clean way
 
 If there is a chain of calls, of which any can be null, without using optionals it would be quite ugly
-```Java
+~~~Java
 //not null safe
 System.println(obj1.getObj2().getObj3().getObj4());
 
@@ -168,7 +174,7 @@ if (obj1.getObj2() != null) {
 
 	}
 }
-```
+~~~
 
 **Note**: Avoid passing Optional objects as a parameter to a function, it pushes the burden of checking to the function.
 
