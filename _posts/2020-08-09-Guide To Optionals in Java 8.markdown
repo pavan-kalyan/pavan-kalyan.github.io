@@ -172,8 +172,17 @@ if (obj1.getObj2() != null) {
 	if (obj1.getObj2().getObj3() != null) {
 		System.println(obj1.getObj2().getObj3().getObj4());
 
+	} else {
+		System.println("Object not found");
 	}
 }
+~~~
+
+Using optionals, we can write a much more compact and readable code
+
+~~~ java
+
+System.out.println(Optional.ofNullable(obj1).map(Obj1::getObj2).map(Obj2::getObj3).map(Obj3::getObj4).orElse("Object not found"));
 ~~~
 
 **Note**: Avoid passing Optional objects as a parameter to a function, it pushes the burden of checking to the function.
