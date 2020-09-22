@@ -38,7 +38,7 @@ stackoverflow:
   id: 7470050
 
 # Build settings
-theme: minima
+theme: jekyll-theme-midnight
 url: "https://pavan-kalyan.github.io" # the base hostname & protocol for your site
 plugins:
   - jekyll-sitemap
