@@ -4,6 +4,7 @@ title:  "Setting up a 24/7 torrent machine using your Raspberry Pi"
 excerpt: "Use your RPI to download torrents for you in the background."
 date:   2020-03-11 1:00:00 +0530 
 author: Pavan Kalyan Damalapati
+tags: [rpi, linux, shell]
 ---
 
 This is a step-by-step guide to setup an always on torrent machine.
@@ -67,7 +68,9 @@ deluge-web
 Open your browser and navigate to http://localhost:8112 on the RPI or <url of RPI>:8112 from any other device on the same network.
 you should be seeing a UI similar to the one below.
 
-![Deluge WebUI](/assets/deluge-webui.png){:class="img-responsive"}
+{% include image.html path="deluge-webui.png"
+                      path-detail="deluge-webui.png"
+                      alt="Deluge WebUI image" %}
 
 You will be prompted with a connection manager. Choose the connection and click connect.
 You will then be prompted for a password
@@ -123,4 +126,3 @@ That's it. You now have a 24/7 torrent machine always downloading data in the ba
 Next, you should set up a VPN, so that your torrent downloads can not be tracked by your ISP or any other entity.
 You should also try [Dataplicity](https://www.dataplicity.com/) which is what I use to access my RPI (and torrent client) from anywhere in the world with an internet connection.
 
-If there are any issues with the content, please contact me by email(below) and let me know.

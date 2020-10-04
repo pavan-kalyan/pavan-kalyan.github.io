@@ -4,6 +4,7 @@ title:  "Introduction to the date-time API in Java 8"
 excerpt: "Understand the different important time related entities in Java 8 and their use cases"
 date:   2020-04-18 1:00:00 +0530 
 author: Pavan Kalyan Damalapati
+tags: [java]
 ---
 
 This post will cover some of the more frequently used Classes in Java 8's date time API.
@@ -282,4 +283,3 @@ ZonedDateTime zonedDateTime = ZonedDateTime.now().withZoneSameInstant(ZoneId.of(
 
 - [Basil Bourque's Stack Overflow answer](https://stackoverflow.com/a/32443004/7470050)
 
-If there are any issues with the content, please contact me by email(below) and let me know.

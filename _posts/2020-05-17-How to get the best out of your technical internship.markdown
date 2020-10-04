@@ -44,4 +44,3 @@ A company is filled with many different employees from many different background
 ### Ask for feedback
 Throughout your internship, ask for feedback from your mentors and colleagues. This feedback is very valuable and once you ask for it, make sure you act on it.
 
-If there are any issues with the content, please contact me by email(below) and let me know.
