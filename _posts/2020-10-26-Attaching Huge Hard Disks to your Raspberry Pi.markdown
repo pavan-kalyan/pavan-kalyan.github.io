@@ -4,7 +4,7 @@ title:  "Common Issues With Attaching Huge Capacity Hard Disks To Your Raspberry
 excerpt: "Common pitfalls which can happen when trying to setup a huge capacity HDD on Rpi"
 date:   2020-10-26 00:00:00 +0530
 author: Pavan Kalyan Damalapati
-tags: [rpi]
+tags: [rpi, linux]
 ---
 
 
