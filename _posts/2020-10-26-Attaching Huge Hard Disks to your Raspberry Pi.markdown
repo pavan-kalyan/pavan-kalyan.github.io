@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Common Issues With Attaching Huge Capacity Hard Disks To Your Raspberry Pi"
-excerpt: "This article discusses common pitfalls which can happen when trying to setup a Huge Capacity HDD on Rpi"
+excerpt: "Common pitfalls which can happen when trying to setup a huge capacity HDD on Rpi"
 date:   2020-10-26 00:00:00 +0530
 author: Pavan Kalyan Damalapati
 tags: [rpi]
@@ -19,7 +19,7 @@ As soon as I connected my hard disk, I started hearing clicking sounds every few
 #### There are a few things that can be done in this case
 - Use an external power supply for the HDD. Usually big capacity HDDs come with the requirement of an external power supply. But my 4TB WD HDD (Brick) didn't.
 - Unplug all other unnecessary appliances. The power is shared among the different USB ports. This did the trick for me. I previously had a 64GB and 1TB hard disk attached. removing them, helped my brick to startup.
-- Ensure that the power Adapter is a hight quality one with a high amperage. The one I used provided 2A.
+- Ensure that the power Adapter is a high quality one with a high amperage. The one I used provided 2A.
 
 
 
@@ -27,11 +27,7 @@ As soon as I connected my hard disk, I started hearing clicking sounds every few
 Normally to make an external HDD mount, you need to understand it's UUID and add a line into the `/etc/fstab` file. This tells the system how and where to mount the HDD on bootup.
 But when I added the line to the fstab file and rebooted the system. It showed that the **Brick** was not mounted. I rechecked the fstab and it was correct.
 This is when I thought of [**dmesg**](https://man7.org/linux/man-pages/man1/dmesg.1.html). **dmesg** is a tool which outputs the kernel buffer. This is useful for diagnostic purposes.
-I simply ran 
-~~~
-dmesg
-~~~
-and I received the following output
+I simply ran `dmesg` and I received the following output
 
 ~~~
 [    5.680612] sd 0:0:0:0: [sda] Spinning up disk...
@@ -42,14 +38,14 @@ and I received the following output
 ~~~
 Notice the time difference from when it starts up the disk and when it figures out the size of the HDD. seems like around 4-5 seconds. This made me suspicious that maybe the system does not mount it because, it takes too long with such a big drive.
 I looked for a solution and found [this](https://www.raspberrypi.org/forums/viewtopic.php?t=111664).
-The solution was to add the line 'rootdelay=5' to `/boot/cmdline.txt`.
+The solution was to add the line `rootdelay=5` to `/boot/cmdline.txt`.
 After adding that and rebooting. It worked! (This may not be the best way to do this)
 
 ### Concern 3: HDD Speed and RPI Performance
 As I was trying to download a large file. I noticed it was failing and my Rpi started to hang.
-The lag was so bad that simply typing ls in the `/media/pi/brick` folder seemed to **brick** my system.
+The lag was so bad that simply typing `ls` in the `/media/pi/brick` folder seemed to **brick** my system.
 
-I used **htop** to understand what was happening
+I used [**htop**](https://htop.dev/) to understand what was happening
 There was one process which seemed to consume a lot of cpu cycles.
 **mkfuse.exfat**
 This was the software used to mount and handle **exfat** file system. The brick was formatted as **exfat**.
