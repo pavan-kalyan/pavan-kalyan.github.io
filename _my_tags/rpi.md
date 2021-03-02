@@ -1,4 +1,0 @@
----
-slug: rpi
-name: rpi
----

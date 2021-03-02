@@ -1,20 +1,66 @@
----
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="https://www.w3.org/2005/Atom" xmlns:dc="https://purl.org/dc/elements/1.1/">
   <channel>
-    <title>{{ site.name | xml_escape }}</title>
-    <description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>
-    <link>{{ site.url }}</link>
-    <atom:link href="{{ page.path | absolute_url }}" rel="self" type="application/rss+xml" />
-    {% for post in site.posts limit:10 %}
+    <title>Pavan Kalyan's Blog</title>
+    <description></description>
+    <link>https://pavan-kalyan.dev</link>
+    <atom:link href="https://pavan-kalyan.dev/feed.xml" rel="self" type="application/rss+xml" />
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.description | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | absolute_url }}</link>
-        <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>
+        <title>Common Issues With Attaching Huge Capacity Hard Disks To Your Raspberry Pi</title>
+        <description></description>
+        <pubDate>Mon, 26 Oct 2020 00:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/attaching-huge-hard-disks-to-your-raspberry-pi</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/attaching-huge-hard-disks-to-your-raspberry-pi</guid>
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>Guide to Optionals in Java 8</title>
+        <description></description>
+        <pubDate>Sun, 09 Aug 2020 00:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/guide-to-optionals-in-java-8</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/guide-to-optionals-in-java-8</guid>
+      </item>
+    
+      <item>
+        <title>How to get the best out of your technical internship</title>
+        <description></description>
+        <pubDate>Sun, 17 May 2020 01:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/how-to-get-the-best-out-of-your-technical-internship</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/how-to-get-the-best-out-of-your-technical-internship</guid>
+      </item>
+    
+      <item>
+        <title>Introduction to the date-time API in Java 8</title>
+        <description></description>
+        <pubDate>Sat, 18 Apr 2020 01:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/intro-to-the-date-time-api-in-java-8</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/intro-to-the-date-time-api-in-java-8</guid>
+      </item>
+    
+      <item>
+        <title>Setting up a 24/7 torrent machine using your Raspberry Pi</title>
+        <description></description>
+        <pubDate>Wed, 11 Mar 2020 01:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/setting-up-an-always-on-torrent-machine-using-your-raspberry-pi</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/setting-up-an-always-on-torrent-machine-using-your-raspberry-pi</guid>
+      </item>
+    
+      <item>
+        <title>Intro to Time Series Databases</title>
+        <description></description>
+        <pubDate>Sun, 23 Feb 2020 20:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/intro-to-time-series-databases</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/intro-to-time-series-databases</guid>
+      </item>
+    
+      <item>
+        <title>Initial Commit</title>
+        <description></description>
+        <pubDate>Sun, 16 Feb 2020 15:52:08 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/initial-commit</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/initial-commit</guid>
+      </item>
+    
   </channel>
 </rss>
