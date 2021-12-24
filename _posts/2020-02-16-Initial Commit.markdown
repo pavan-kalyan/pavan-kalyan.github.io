@@ -18,9 +18,6 @@ Many times I find myself doing repeated activities like googling the solution to
 * **It enhances the quality of my learning and my ability to communicate ideas**:
 When learning new things, it is easy and tempting to skip over fine details and learn how to make it work rather than learn how it works. Writing a blog post of something I learn will force me to research more thoroughly and will ensure that I understand a concept and can implement it confidently, after all, you never really understand something if you can't explain it to others.
 
-* **Sharing knowledge leads to more collaboration**:
-As someone who has benefitted greatly from all the free resources and knowledge available on the internet, I firmly believe sharing knowledge leads to more collaboration and better technologies.
-
 Ok, so what will you talk about?
 
 Anything that interests me really, my current interests are Linux, Open Source contribution, Java, competitive coding, Go, etc.
@@ -29,4 +26,3 @@ Maybe steps to set something up or a breakdown of a notorious bug I came across 
 maybe a getting started guide on a new language or framework.
 
 This blog is hosted using [Github Pages](https://pages.github.com/) and will be ad-free and lightweight.
-

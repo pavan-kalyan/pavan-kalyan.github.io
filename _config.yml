@@ -14,14 +14,15 @@ ga_analytics: # Add your GA Tracking Id
 local_fonts: false # Change to true if you wish to use local fonts
 rss_enabled: true # Change to false if not
 scrollappear_enabled: false # Change to false to disable
-tag_nav_enabled: false # Change to true if you wish to show an additional 'tag-list' navigation below the header
+tag_nav_enabled: false # change to true if you wish to show an additional 'tag-list' navigation below the header
+show_sub_headers: true 
 theme_toggle: true # Change to true if you wish to show an icon in the navigation for dynamic theme toggling
 social:
   dribbble: # Add your Dribbble handle
   facebook: # Add your Facebook handle
   flickr: # Add your Flickr handle
   github: pavan-kalyan # Add your GitHub handle
-  linkedin: pavan-kalyan-damalapati# Add your LinkedIn handle
+  linkedin: pavan-kalyan-damalapati # Add your LinkedIn handle
   twitter: # Add your Twitter handle
   email: damalapati.pavan@gmail.com    # Add your Email address
   bitcoin: # Add your Bitcoin link or address
@@ -35,7 +36,7 @@ social:
   docker: # Add your Docker Hub handle
   instagram: # Add your Instagram handle
   keybase: # Add your Keybase handle
-  medium: # Add your Medium handle
+  medium: "@damalapati.pavan" # Add your Medium handle
   spotify: # Add your Spotify handle
   stackoverflow: 7470050 # Add your Stack Overflow ID number
   steam: # Add your Steam handle
