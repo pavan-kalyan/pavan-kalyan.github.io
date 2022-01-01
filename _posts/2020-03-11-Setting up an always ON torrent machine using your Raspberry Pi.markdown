@@ -29,7 +29,7 @@ sudo apt-get update && sudo apt-get upgrade
 ~~~
 
 ~~~ shell
-sudo apt-get install deluged python-mako deluge-web deluge-console
+sudo apt-get install deluged python3-mako deluge-web deluge-console
 ~~~
 Run the following to setup the default config files, which we will modify soon.
 ~~~ shell
@@ -52,7 +52,8 @@ deluge-console
 ~~~
 Insert the following into the prompt of deluge-console.
 ~~~ shell
-config -s allow_remote True config allow_remote exit
+config -s allow_remote True 
+exit
 ~~~
 This allows remote connections to your deluge daemon.
 Restart the deluge daemon one last time.
