@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "Intro to Time Series Databases"
-excerpt: "What are time series databases? and how can we utilize them?"
+excerpt: "Very very surface level introduction to time series databases"
 date:   2020-02-23 20:00:00 +0530
 author: Pavan Kalyan Damalapati
+tags: [db]
 ---
 
 This is an intro to Time series databases, this post will be light on technical details since it's only an intro.
