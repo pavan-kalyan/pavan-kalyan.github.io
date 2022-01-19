@@ -44,10 +44,12 @@ It means that if we run a set of transactions in all possible orders, we would e
 So, it's essentially a catch-all term that's supposed to represent every other concurrency bug that's not covered in 1, 2, and 3. The following are some of the concurrency bugs/phenomena possible in this category.
 
 - Lost Updates
+
 	If a transaction (tx1) reads a value, modifies it based on a condition and writes it. It's possible that another transaction (tx2) at the same time	reads the value, modifies it based on a condition, and writes it. But only one write would be possible, usually the last write (last write wins strategy).
 	This is a problem in certain scenarios. For example, consider 2 clients trying to increment a value. tx1 reads the value (a), increments it (a+1), and tries to update the row. Simultaneously tx2 also reads the value as a and increments it. The expected final output is a+2, but in reality, it's a+1, because only one write won. This happened because each transaction can only read committed values.
 
 - Phantom Writes
+
 	This is quite similar to the above situation, except it generalizes to a set of rows under a search condition. tx1 and tx2 modify a set of rows under a search condition, which is no longer valid or applicable by the end of their respective executions.
 
 - More scenarios are mentioned [here](https://github.com/ept/hermitage#summary-of-test-results) [1] along with the corresponding source literature.
