@@ -19,7 +19,7 @@ To first understand isolation levels, we need to understand what kind of concurr
 ## Phenomena
 
 ### 1. Dirty Reads
-When one transaction reads uncommitteds value from another transaction.
+When one transaction reads uncommitted values from another transaction.
 
 ### 2. Non Repeatable Reads
 When a transaction reads a row at one point in time and then later reads the same row, but finds that it has been updated (by another transaction). Note that this row update has been committed by the other transaction, so it's not dirty.
