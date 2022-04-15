@@ -1,20 +1,90 @@
----
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="https://www.w3.org/2005/Atom" xmlns:dc="https://purl.org/dc/elements/1.1/">
   <channel>
-    <title>{{ site.name | xml_escape }}</title>
-    <description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>
-    <link>{{ site.url }}</link>
-    <atom:link href="{{ page.path | absolute_url }}" rel="self" type="application/rss+xml" />
-    {% for post in site.posts limit:10 %}
+    <title>Pavan Kalyan's Blog</title>
+    <description></description>
+    <link>https://pavan-kalyan.dev</link>
+    <atom:link href="https://pavan-kalyan.dev/feed.xml" rel="self" type="application/rss+xml" />
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.description | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | absolute_url }}</link>
-        <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>
+        <title>TIL: Determine expected solution from given constraints</title>
+        <description></description>
+        <pubDate>Fri, 15 Apr 2022 01:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/til-how-to-determine-expected-solution-complexity-from-constraints</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/til-how-to-determine-expected-solution-complexity-from-constraints</guid>
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>Transaction Isolation Levels Are A Confusing Mess</title>
+        <description></description>
+        <pubDate>Wed, 19 Jan 2022 00:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/transaction-isolation-levels-are-a-confusing-mess</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/transaction-isolation-levels-are-a-confusing-mess</guid>
+      </item>
+    
+      <item>
+        <title>Why append-only writes are much faster than random writes</title>
+        <description></description>
+        <pubDate>Sat, 08 Jan 2022 01:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/why-append-only-writes-are-much-faster-than-random-writes</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/why-append-only-writes-are-much-faster-than-random-writes</guid>
+      </item>
+    
+      <item>
+        <title>TIL: How to create an empty Pull Request on GitHub</title>
+        <description></description>
+        <pubDate>Fri, 31 Dec 2021 00:52:08 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/til-how-to-create-an-empty-pr-on-github</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/til-how-to-create-an-empty-pr-on-github</guid>
+      </item>
+    
+      <item>
+        <title>Common Issues With Attaching Huge Capacity Hard Disks To Your Raspberry Pi</title>
+        <description></description>
+        <pubDate>Mon, 26 Oct 2020 00:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/attaching-huge-hard-disks-to-your-raspberry-pi</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/attaching-huge-hard-disks-to-your-raspberry-pi</guid>
+      </item>
+    
+      <item>
+        <title>Guide to Optionals in Java 8</title>
+        <description></description>
+        <pubDate>Sun, 09 Aug 2020 00:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/guide-to-optionals-in-java-8</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/guide-to-optionals-in-java-8</guid>
+      </item>
+    
+      <item>
+        <title>How to get the best out of your technical internship</title>
+        <description></description>
+        <pubDate>Sun, 17 May 2020 01:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/how-to-get-the-best-out-of-your-technical-internship</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/how-to-get-the-best-out-of-your-technical-internship</guid>
+      </item>
+    
+      <item>
+        <title>Introduction to the date-time API in Java 8</title>
+        <description></description>
+        <pubDate>Sat, 18 Apr 2020 01:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/intro-to-the-date-time-api-in-java-8</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/intro-to-the-date-time-api-in-java-8</guid>
+      </item>
+    
+      <item>
+        <title>Setting up a 24/7 torrent machine using your Raspberry Pi</title>
+        <description></description>
+        <pubDate>Wed, 11 Mar 2020 01:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/setting-up-an-always-on-torrent-machine-using-your-raspberry-pi</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/setting-up-an-always-on-torrent-machine-using-your-raspberry-pi</guid>
+      </item>
+    
+      <item>
+        <title>Intro to Time Series Databases</title>
+        <description></description>
+        <pubDate>Sun, 23 Feb 2020 20:00:00 +0530</pubDate>
+        <link>https://pavan-kalyan.dev/posts/intro-to-time-series-databases</link>
+        <guid isPermaLink="true">https://pavan-kalyan.dev/posts/intro-to-time-series-databases</guid>
+      </item>
+    
   </channel>
 </rss>
