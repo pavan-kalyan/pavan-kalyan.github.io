@@ -81,6 +81,10 @@ It is highly recommended that you change the password in the settings available 
 The advantage of using the WebUI is that you can access it from any browser on any device. 
 but you can also use a thinclient, for e.g, I use [trireme](https://f-droid.org/packages/org.deluge.trireme/)
 
+**Note**: When setting up deluge auto start, it’s important to set the right access level or deluge will not be able to access the external hard disk.
+
+**TODO**: instructions to set up permissions via systemd.
+
 #### Setup trireme on Android (Optional)
 1. Install it from [here](https://f-droid.org/packages/org.deluge.trireme/) or from [GitHub](https://github.com/teal77/trireme/releases)
 2. In the host field, enter the ip address of the rpi. The host field should already be filled in with `58846` as the default port no. (if you didn't change it). Click on continue.
