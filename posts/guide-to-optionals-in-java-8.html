@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Pavan Kalyan's Blog | Guide to Optionals in Java 8</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta property="og:title" content="Guide to Optionals in Java 8">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://pavan-kalyan.dev/posts/guide-to-optionals-in-java-8">
+	<meta property="og:description" content="">
+	<meta property="og:site_name" content="Pavan Kalyan's Blog">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:url" content="https://pavan-kalyan.dev/posts/guide-to-optionals-in-java-8">
+	<meta name="twitter:title" content="Guide to Optionals in Java 8">
+	<meta name="twitter:description" content="">
+
+	
+	<meta property="og:image" content="https://pavan-kalyan.dev/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+	<meta name="twitter:image" content="https://pavan-kalyan.dev/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+	
+
+	<link href="https://pavan-kalyan.dev/feed.xml" type="application/rss+xml" rel="alternate" title="Pavan Kalyan's Blog Last 10 blog posts" />
+
+	
+	<link rel="stylesheet" type="text/css" href="/assets/fonts-d3e0f161d4de5765d4bcd9df3bfa83599d907ee9667d5148371c2af24f725559.css">
+	
+
+	
+
+	
+	<link rel="stylesheet" type="text/css" title="light" id="light" href="/assets/light-ebe4700bfdbf6a2473d76231d2f0dc5b8e8a3ca56a2bc42baa20641c1ef8ede5.css">
+	<link rel="stylesheet" type="text/css" title="dark" id="dark" href="/assets/dark-28a53529149b36ea483bc030c7284596de2cedbca4690407eb0fc3262a5d5ebb.css" disabled="true">
+	
+
+	
+
+	<!-- Goat Counter - webpage counter -->
+	<script data-goatcounter="https://pavan-kalyan.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+	 <!-- /Goat Counter -->
+
+</head>
+
+<body>
+  <main>
+    <div class="grid grid-centered">
+      <div class="grid-cell">
+        <nav class="header-nav ">
+  <a href="/" class="header-logo" title="Pavan Kalyan's Blog">Pavan Kalyan's Blog</a>
+  <ul class="header-links">
+    
+    
+    
+      <li>
+        <a href="https://medium.com/@damalapati.pavan" rel="noreferrer noopener" target="_blank" title="Medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-medium">
+  <use href="/assets/medium-c490b76e2e7329f77cc2df18acc17452868ea861ed0e1ecf621c9777877068f5.svg#icon-medium" xlink:href="/assets/medium-c490b76e2e7329f77cc2df18acc17452868ea861ed0e1ecf621c9777877068f5.svg#icon-medium"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="https://github.com/pavan-kalyan" rel="noreferrer noopener" target="_blank" title="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-github">
+  <use href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github" xlink:href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+      <li>
+        <a href="https://stackoverflow.com/users/7470050" rel="noreferrer noopener" target="_blank" title="Stack Overflow">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-stackoverflow">
+  <use href="/assets/stackoverflow-12ba59133ed134d26156d30f095e0222b6039395cf26f2fab0cb6ce3ef2db00d.svg#icon-stackoverflow" xlink:href="/assets/stackoverflow-12ba59133ed134d26156d30f095e0222b6039395cf26f2fab0cb6ce3ef2db00d.svg#icon-stackoverflow"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+      <li>
+        <a href="https://www.linkedin.com/in/pavan-kalyan-damalapati" rel="noreferrer noopener" target="_blank" title="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-linkedin">
+  <use href="/assets/linkedin-cdc5c107044324a3dfbea2e9ead15873f8dee304c37d73a046988956b706256e.svg#icon-linkedin" xlink:href="/assets/linkedin-cdc5c107044324a3dfbea2e9ead15873f8dee304c37d73a046988956b706256e.svg#icon-linkedin"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li>
+        <a href="mailto:damalapati.pavan@gmail.com" title="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-email">
+  <use href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email" xlink:href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="/feed.xml" rel="noreferrer noopener" target="_blank" title="RSS">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-rss">
+  <use href="/assets/rss-541ec5cea9cefd10d2fcfec01888f3f231a8829940249835fa7b7b3a12ae0d0d.svg#icon-rss" xlink:href="/assets/rss-541ec5cea9cefd10d2fcfec01888f3f231a8829940249835fa7b7b3a12ae0d0d.svg#icon-rss"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+      <li>
+        <a onclick="toggle()" title="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-theme">
+  <use href="/assets/theme-66869e0bf8dab34bae1c86bda400327b772e0be69e8dc28d3ede896e771320ed.svg#icon-theme" xlink:href="/assets/theme-66869e0bf8dab34bae1c86bda400327b772e0be69e8dc28d3ede896e771320ed.svg#icon-theme"></use>
+</svg>
+
+        </a>
+      </li>
+    
+  </ul>
+
+<nav>
+  <ul class="header-sub ">
+    
+      <li><a href="/">Blog</a></li>
+    
+    
+      <li>
+        <a href="/about/" title="About me">About</a>
+      </li>
+    
+    <li><a href="/research/">Research</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/publications/">Articles</a></li>
+  </ul>
+</nav>
+
+</nav>
+
+
+
+
+        <article class="article ">
+          <header class="article-header">
+            <h1>Guide to Optionals in Java 8</h1>
+            <p></p>
+            <div class="article-list-footer">
+  <span class="article-list-date">
+    August 9, 2020
+  </span>
+  <span class="article-list-divider">-</span>
+  <span class="article-list-minutes">
+    
+    
+      6 minute read
+    
+  </span>
+  <span class="article-list-divider">-</span>
+  <div class="article-list-tags">
+    
+      
+      <a href="/tag/java" title="See all posts with tag 'java'">java</a>
+    
+  </div>
+</div>
+          </header>
+
+          <div class="article-content">
+            <h3 id="introduction">Introduction</h3>
+<p>NullPointerExceptions are some of the worst kind of issues to experience especially in production. This is a constant pain point of Java Developers (and developers in general). This <a href="https://dzone.com/articles/the-worst-mistake-of-computer-science-1">article</a> goes into great detail on why null causes problems everywhere.
+But the main take aways are:</p>
+<ul>
+  <li>Using null values lead to error prone and buggy code.</li>
+  <li>Handling null values leads to ugly and unecessarily verbose code.</li>
+  <li>When we do get a NullPointerException, it’s not always clear, why a particular object is null as the exception is thrown usually when a method is called on it, not when the object itself is created.</li>
+</ul>
+
+<p>This article goes through the different methods available in Optionals.java and how they can be used to mitigate some of the issues associated with nulls.</p>
+
+<h3 id="what-exactly-is-an-optional">What exactly is an Optional?</h3>
+<p>Simply put it is a container object which tells you whether or not it currently contains a value.</p>
+
+<h3 id="how-to-create-an-optional-object">How to create an Optional object.</h3>
+<p>There are three main ways to create an Optional object</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Can be used to indicate a non-value</span>
+<span class="nc">Optional</span><span class="o">.</span><span class="na">empty</span><span class="o">()</span>
+<span class="c1">//wraps any non-null object in an optional container</span>
+<span class="nc">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">()</span>
+<span class="c1">//wraps any object in an optional container</span>
+<span class="nc">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">()</span>
+</code></pre></div></div>
+
+<p>Let’s see how useful each of these are when dealing with nulls.</p>
+
+<h4 id="use-cases">Use Cases</h4>
+
+<h4 id="to-catch-nullpointerexception-early">To Catch NullPointerException early</h4>
+
+<p>The following code demonstrates that it’s difficult to know exactly when an object was made null, since the NullPointerException can happen much later.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Address Constructor example</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Address</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">ObjectThatCanBeNull</span> <span class="n">objectThatCanBeNull</span><span class="o">;</span>
+
+	<span class="nc">Address</span><span class="o">(</span><span class="nc">ObjectThatCanBeNull</span> <span class="n">object</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">objectThatCanBeNull</span> <span class="o">=</span> <span class="n">object</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="nc">ObjectThatCanBeNull</span> <span class="nf">getObjectThatCouldBeNull</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="nc">ObjectThatCanBeNull</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">//possible incorrect construction with a null value for a nested object.</span>
+<span class="nc">Address</span> <span class="n">address</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Address</span><span class="o">(</span><span class="n">getObjectWhichCanBeNull</span><span class="o">);</span>
+
+<span class="c1">// many lines of code later</span>
+
+<span class="c1">//The following line throws a NullPointerException, and to debug it, requires a lot of backtracking.</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">address</span><span class="o">.</span><span class="na">getObjectThatCouldBeNull</span><span class="o">().</span><span class="na">getValue</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p>This issue can be caught early, if we use Optionals</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Address</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="nc">ObjectThatCanBeNull</span> <span class="n">objectThatCanBeNull</span><span class="o">;</span>
+
+	<span class="nc">Address</span><span class="o">(</span><span class="nc">ObjectThatCanBeNull</span> <span class="n">object</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">objectThatCanBeNull</span> <span class="o">=</span> <span class="n">object</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">ObjectThatCanBeNull</span><span class="o">&gt;</span> <span class="nf">getObjectThatCouldBeNull</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="nc">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="nc">ObjectThatCanBeNull</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// Throws NullPointerException here rather than later and makes it easier to debug</span>
+<span class="nc">Address</span> <span class="n">address</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Address</span><span class="o">(</span><span class="n">getObjectWhichCanBeNull</span><span class="o">);</span>
+
+<span class="c1">// many lines of code later</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">address</span><span class="o">.</span><span class="na">getObjectThatCouldBeNull</span><span class="o">().</span><span class="na">getValue</span><span class="o">());</span>
+</code></pre></div></div>
+
+<h4 id="to-clearly-indicate-that-a-function-can-return-a-non-value">To Clearly Indicate That A Function Can Return A Non-value</h4>
+
+<p>Sometimes returning a null is a valid return value for a function. The calling function handles a null (absence of value) differently.
+<strong>Note</strong>: using null as a valid return value should be avoided if possible.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Address</span> <span class="nf">locateAddress</span><span class="o">(</span><span class="nc">Input</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">isOfTypeAddress</span><span class="o">())</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">input</span><span class="o">.</span><span class="na">getAddress</span><span class="o">();</span>
+	<span class="o">}</span>
+	<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">//Somewhere else the function might be called, where the engineer might not be aware that locateAddress() can return null</span>
+<span class="kt">void</span> <span class="nf">newFunction</span><span class="o">(</span><span class="nc">Input</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+	<span class="c1">// throws a NullPointerException</span>
+	<span class="n">locateAddress</span><span class="o">(</span><span class="n">input</span><span class="o">).</span><span class="na">displayAddress</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>These kinds of situations can be avoided by using Optionals as it makes it explicitly clear that locateAddress() can return an absence of value;</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">Address</span><span class="o">&gt;</span> <span class="nf">locateAddress</span><span class="o">(</span><span class="nc">Input</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">isOfTypeAddress</span><span class="o">())</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">input</span><span class="o">.</span><span class="na">getAddress</span><span class="o">();</span>
+	<span class="o">}</span>
+	<span class="k">return</span> <span class="nc">Optional</span><span class="o">.</span><span class="na">empty</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kt">void</span> <span class="nf">newFunction</span><span class="o">(</span><span class="nc">Input</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+	<span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">Address</span><span class="o">&gt;</span> <span class="n">optionalAddress</span> <span class="o">=</span> <span class="n">locateAddress</span><span class="o">(</span><span class="n">input</span><span class="o">);</span>
+
+	<span class="k">if</span> <span class="o">(</span><span class="n">optionalAddress</span><span class="o">.</span><span class="na">isPresent</span><span class="o">())</span> <span class="o">{</span>
+		<span class="n">optionalAddress</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">displayAddress</span><span class="o">();</span>
+	<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+		<span class="c1">// we can either log it as an error or display some actionable error message</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Address does not exist for this user, please contact Support."</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="different-methods-available-in-optionalsjava">Different Methods available in Optionals.java</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// simply returns the object contained in the Optional</span>
+<span class="no">T</span> <span class="nf">get</span><span class="o">();</span>
+
+<span class="c1">// returns whether or not the Optional contains anything or nothing (equivalent to Optional.ofEmpty())</span>
+<span class="kt">boolean</span> <span class="nf">isPresent</span><span class="o">();</span>
+
+<span class="c1">// do an action if the Optional actually contains an object</span>
+<span class="kt">void</span> <span class="nf">ifPresent</span><span class="o">(</span><span class="nc">Consumer</span><span class="o">&lt;?</span> <span class="kd">super</span> <span class="no">T</span><span class="o">&gt;</span> <span class="n">consumer</span><span class="o">);</span>
+
+<span class="c1">// either return the object contained or return other</span>
+<span class="no">T</span> <span class="nf">orElse</span><span class="o">(</span><span class="no">T</span> <span class="n">other</span><span class="o">);</span>
+
+<span class="c1">// either return the object contained or return what the supplier supplies</span>
+<span class="no">T</span> <span class="nf">orElseGet</span><span class="o">(</span><span class="nc">Supplier</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="no">X</span><span class="o">&gt;</span> <span class="n">exceptionSupplier</span><span class="o">);</span>
+
+<span class="c1">// either return the object contained or throw an exception</span>
+<span class="o">&lt;</span><span class="no">X</span> <span class="kd">extends</span> <span class="nc">Throwable</span><span class="o">&gt;</span> <span class="no">T</span> <span class="nf">orElseThrow</span><span class="o">(</span><span class="nc">Supplier</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="no">X</span><span class="o">&gt;</span> <span class="n">exceptionSupplier</span><span class="o">);</span>
+
+<span class="cm">/*
+If a value is present, apply the provided mapping function to it,
+     * and if the result is non-null, return an describing the
+     * result.  Otherwise return Optional.empty().
+     */</span>
+<span class="o">&lt;</span><span class="no">U</span><span class="o">&gt;</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="no">U</span><span class="o">&gt;</span> <span class="nf">map</span><span class="o">(</span><span class="nc">Function</span><span class="o">&lt;?</span> <span class="kd">super</span> <span class="no">T</span><span class="o">,</span> <span class="o">?</span> <span class="kd">extends</span> <span class="no">U</span><span class="o">&gt;</span> <span class="n">mapper</span><span class="o">);</span>
+
+<span class="c1">//similar to map but for flattening it</span>
+<span class="o">&lt;</span><span class="no">U</span><span class="o">&gt;</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="no">U</span><span class="o">&gt;</span> <span class="nf">flatMap</span><span class="o">(</span><span class="nc">Function</span><span class="o">&lt;?</span> <span class="kd">super</span> <span class="no">T</span><span class="o">,</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="no">U</span><span class="o">&gt;&gt;</span> <span class="n">mapper</span><span class="o">)</span> <span class="o">{</span>
+</code></pre></div></div>
+
+<h4 id="use-cases-1">Use Cases</h4>
+
+<h4 id="handle-long-chain-of-null-calls-in-a-clean-way">Handle long chain of null calls in a clean way</h4>
+
+<p>If there is a chain of calls, of which any can be null, without using optionals it would be quite ugly</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//not null safe</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">obj1</span><span class="o">.</span><span class="na">getObj2</span><span class="o">().</span><span class="na">getObj3</span><span class="o">().</span><span class="na">getObj4</span><span class="o">());</span>
+
+<span class="c1">//null safe</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">obj1</span><span class="o">.</span><span class="na">getObj2</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">obj1</span><span class="o">.</span><span class="na">getObj2</span><span class="o">().</span><span class="na">getObj3</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">obj1</span><span class="o">.</span><span class="na">getObj2</span><span class="o">().</span><span class="na">getObj3</span><span class="o">().</span><span class="na">getObj4</span><span class="o">());</span>
+
+	<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Object not found"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Using optionals, we can write a much more compact and readable code</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">obj1</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="nl">Obj1:</span><span class="o">:</span><span class="n">getObj2</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="nl">Obj2:</span><span class="o">:</span><span class="n">getObj3</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="nl">Obj3:</span><span class="o">:</span><span class="n">getObj4</span><span class="o">).</span><span class="na">orElse</span><span class="o">(</span><span class="s">"Object not found"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p><strong>Note</strong>: Avoid passing Optional objects as a parameter to a function, it pushes the burden of checking to the function.</p>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li><a href="https://dzone.com/articles/the-worst-mistake-of-computer-science-1">Article regarding the problems with null</a></li>
+  <li><a href="https://stackoverflow.com/questions/23454952/uses-for-optional">The answers in this StackOverflow question</a></li>
+</ul>
+
+          </div>
+	  <!--
+          <div class="article-share">
+            
+            
+            <a href="https://twitter.com/home?status=Guide+to+Optionals+in+Java+8%20-%20https://pavan-kalyan.dev/posts/guide-to-optionals-in-java-8" title="Share on Twitter" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6 -18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6 0.8 15 2.5 22.1 -80.5-4-151.9-42.6-199.6-101.3 -8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.2 63.3 43.2 80.7C67 210.7 52 206.3 39 199c0 0.4 0 0.8 0 1.2 0 47 33.4 86.1 77.7 95 -8.1 2.2-16.7 3.4-25.5 3.4 -6.2 0-12.3-0.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3 -33.1 26-74.9 41.5-120.3 41.5 -7.8 0-15.5-0.5-23.1-1.4C62.8 432 113.7 448 168.3 448 346.6 448 444 300.3 444 172.2c0-4.2-0.1-8.4-0.3-12.5C462.6 146 479 129 492 109.5z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://pavan-kalyan.dev/posts/guide-to-optionals-in-java-8" title="Share on Facebook" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M288 192v-38.1c0-17.2 3.8-25.9 30.5-25.9H352V64h-55.9c-68.5 0-91.1 31.4-91.1 85.3V192h-45v64h45v192h83V256h56.4l7.6-64H288z"/></svg>
+            </a>
+          </div>
+
+	  -->
+          
+        </article>
+        <footer class="footer ">
+  <p>
+  This is a technical blog, where I write about various things I learn or want to share.
+  <br>
+    <a href="/about" title="About me">Pavan Kalyan Damalapati</a>
+</footer>
+
+      </div>
+    </div>
+  </main>
+  
+
+<script type="text/javascript" src="/assets/vendor-130c9c254effc51f3283620bc635851da7b99c20901216948f11ba72ee13317f.js"></script>
+
+
+
+
+
+<script type="text/javascript" src="/assets/application-cfde13ac81ddaf4351b2e739603e2baf688d0fcc9aba613fe62bbb1c7b037fb9.js"></script>
+
+
+  <script type="text/javascript" src="/assets/themetoggle-df0d3d73164dc26dffbd630182ae4d0dfa7bee6b694a2b5d565d73595b582bbf.js"></script>
+
+</body>
+</html>
