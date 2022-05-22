@@ -1,8 +1,11 @@
 {
   "name": "meant",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Like the `Did you mean?` in git for npm",
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "devDependencies": {
     "standard": "^11.0.1",
     "standard-version": "^8.0.1",
