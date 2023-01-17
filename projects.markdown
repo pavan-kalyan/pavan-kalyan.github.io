@@ -17,8 +17,13 @@ Future improvements will be to allow syncing with Google Calendar and set up not
 Latest build (APK) is available [here](https://github.com/pavan-kalyan/Kontests-Unofficial/releases){:target="_blank"}. Currently, it's only available for Android, but since it's built on Flutter, same code can be used to build an IOS app.
 
 
-### Budgeter (Upcoming)
+### i3 Intelligent Display Management (Upcoming)
 
+This software is designed to detect hotplugging of monitors and automatically restore previous layout. It's written in Go and utilizes inter process communication to efficiently manage the layouts.
+It's intelligent enough to differentiate between monitors and outputs, which is particularly useful when using docks.
+
+
+### Budgeter (Upcoming)
 
 This app is designed to automatically track spending by reading SMS messages and email. Current plan is to use Google Sheets as backend/database (for easy data portability and zero-cost infra).
 It would also have data analysis and reporting capability.
