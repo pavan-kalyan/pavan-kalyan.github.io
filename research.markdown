@@ -10,6 +10,7 @@ Within the realm of computer science, I'm interested in the following fields and
 - Artificial Intelligence
 - Health Analytics
 
+You can view my research publications [here](/publications).
 
 You can read my database related blog posts [here](/tag/db/index.html).
 
