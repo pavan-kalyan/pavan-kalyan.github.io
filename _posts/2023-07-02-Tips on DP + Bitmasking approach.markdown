@@ -7,7 +7,9 @@ author: Pavan Kalyan Damalapati
 tags: [cp]
 ---
 
-I came across a few "HARD" problems on Leetcode and codeforces that seeemed to have a similar pattern. After failing to solve them I finally decided to learn about it.
+I came across a few "HARD" problems on Leetcode and codeforces that all seemed to have a similar pattern. 
+They utilized Dynamic Programming and Bitmasking.
+After failing to solve them I finally decided to learn it properly.
 
 Here are some tips I have learned on recognizing and solving these types of problems.
 
