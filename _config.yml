@@ -77,6 +77,7 @@ exclude:
   - vendor/
   - yarn.lock
 markdown: kramdown
+include: ['*.html']
 plugins:
   - jekyll-assets
   - jekyll-paginate
@@ -84,3 +85,7 @@ plugins:
   - jemoji
 paginate_path: /posts/page/:num/
 permalink: posts/:slug
+  # algolia:
+  # application_id: 3OKSPP0TAB
+  # index_name: prod_blog
+  # search_only_api_key: 0360ba8b1c98e76a5ee9b12d7514eac0

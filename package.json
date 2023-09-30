@@ -2,10 +2,12 @@
   "name": "chalk",
   "scripts": {
     "setup": "bin/setup",
-    "local": "bundle exec jekyll serve --drafts",
+    "local": "bundle exec jekyll serve --config _config.yml,_secret.yml --drafts",
     "publish": "bin/deploy"
   },
   "dependencies": {
+    "algoliasearch": "^4.20.0",
+    "instantsearch.js": "^4.57.0",
     "jquery": "^3.2.1",
     "npm": "^6.0.1",
     "retinajs": "^2.1.1",

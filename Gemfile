@@ -14,3 +14,6 @@ gem "sprockets", "~> 3.7"
 gem "uglifier"
 gem "jquery-rails"
 gem "turbolinks"
+group :jekyll_plugins do
+  gem 'jekyll-algolia', github: 'algolia/jekyll-algolia', ref: 'refs/pull/126/head'
+end
