@@ -1,8 +1,8 @@
 Arguments: 
-  /Users/pavan/.nvm/versions/node/v20.3.1/bin/node /opt/homebrew/bin/yarn add instantsearch.js algoliasearch
+  /Users/pavan/.nvm/versions/node/v20.3.1/bin/node /opt/homebrew/bin/yarn install --modules-folder ./_assets/yarn
 
 PATH: 
-  /opt/homebrew/opt/sqlite/bin:/Users/pavan/.rbenv/shims:/Users/pavan/.nvm/versions/node/v20.3.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
+  /Users/pavan/dev/blog/node_modules/.bin:/Users/pavan/dev/node_modules/.bin:/Users/pavan/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/Users/pavan/.nvm/versions/node/v20.3.1/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/opt/homebrew/opt/sqlite/bin:/Users/pavan/.rbenv/shims:/Users/pavan/.nvm/versions/node/v20.3.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
 
 Yarn version: 
   1.22.19
@@ -30,7 +30,7 @@ npm manifest:
     "name": "chalk",
     "scripts": {
       "setup": "bin/setup",
-      "local": "bundle exec jekyll serve --drafts",
+      "local": "bundle exec jekyll serve --config _config.yml,_secret.yml --drafts",
       "publish": "bin/deploy"
     },
     "dependencies": {

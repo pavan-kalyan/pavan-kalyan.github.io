@@ -3,20 +3,20 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Pavan Kalyan's Blog | Tags</title>
-	<meta name="description" content="Tag cloud from all the posts">
+	<title>Pavan Kalyan's Blog | Why append-only writes are much faster than random writes</title>
+	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<meta property="og:title" content="Tags">
+	<meta property="og:title" content="Why append-only writes are much faster than random writes">
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://pavan-kalyan.dev/tags">
-	<meta property="og:description" content="Tag cloud from all the posts">
+	<meta property="og:url" content="https://pavan-kalyan.dev/posts/why-append-only-writes-are-much-faster-than-random-writes">
+	<meta property="og:description" content="">
 	<meta property="og:site_name" content="Pavan Kalyan's Blog">
 
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:url" content="https://pavan-kalyan.dev/tags">
-	<meta name="twitter:title" content="Tags">
-	<meta name="twitter:description" content="Tag cloud from all the posts">
+	<meta name="twitter:url" content="https://pavan-kalyan.dev/posts/why-append-only-writes-are-much-faster-than-random-writes">
+	<meta name="twitter:title" content="Why append-only writes are much faster than random writes">
+	<meta name="twitter:description" content="">
 
 	
 	<meta property="og:image" content="https://pavan-kalyan.dev/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
@@ -169,154 +169,78 @@
 
 
 
-        <div class="tags-page">
-  <h1 class="tags-page-header">
-    Tags
-  </h1>
-
-  
-
-  
-
-  
-
+        <article class="article ">
+          <header class="article-header">
+            <h1>Why append-only writes are much faster than random writes</h1>
+            <p></p>
+            <div class="article-list-footer">
+  <span class="article-list-date">
+    January 7, 2022
+  </span>
+  <span class="article-list-divider">-</span>
+  <span class="article-list-minutes">
     
     
+      2 minute read
     
-
+  </span>
+  <span class="article-list-divider">-</span>
+  <div class="article-list-tags">
+    
       
-      
-
+      <a href="/tag/db" title="See all posts with tag 'DB'">DB</a>
     
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="tag-cloud" href="/tag/cp" title="See all posts by COMPETITIVE-PROGRAMMING tag"
-      style="font-size: 150%">
-        <span>COMPETITIVE-PROGRAMMING<small>(2)</small></span>
-      </a>
-    
-
-  
-
-    
-    
-    
-
-      
-      
-
-    
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="tag-cloud" href="/tag/db" title="See all posts by DB tag"
-      style="font-size: 180%">
-        <span>DB<small>(4)</small></span>
-      </a>
-    
-
-  
-
-    
-    
-    
-
-      
-      
-
-    
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="tag-cloud" href="/tag/git" title="See all posts by GIT tag"
-      style="font-size: 135%">
-        <span>GIT<small>(1)</small></span>
-      </a>
-    
-
-  
-
-    
-    
-    
-
-      
-      
-
-    
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="tag-cloud" href="/tag/java" title="See all posts by JAVA tag"
-      style="font-size: 150%">
-        <span>JAVA<small>(2)</small></span>
-      </a>
-    
-
-  
-
-    
-    
-    
-
-      
-      
-
-    
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="tag-cloud" href="/tag/linux" title="See all posts by LINUX tag"
-      style="font-size: 150%">
-        <span>LINUX<small>(2)</small></span>
-      </a>
-    
-
-  
-
-    
-    
-    
-
-      
-      
-
-    
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="tag-cloud" href="/tag/rpi" title="See all posts by RPI tag"
-      style="font-size: 150%">
-        <span>RPI<small>(2)</small></span>
-      </a>
-    
-
-  
-
-    
-    
-    
-
-      
-      
-
-    
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="tag-cloud" href="/tag/shell" title="See all posts by RPI tag"
-      style="font-size: 135%">
-        <span>RPI<small>(1)</small></span>
-      </a>
-    
-
-  
-
-    
-    
-    
-
-      
-      
-
-    
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="tag-cloud" href="/tag/til" title="See all posts by TIL tag"
-      style="font-size: 150%">
-        <span>TIL<small>(2)</small></span>
-      </a>
-    
-
-  
+  </div>
 </div>
+          </header>
 
+          <div class="article-content">
+            <p>In the last decade, many database systems utilize log structured data structures to support high write throughput like RocksDB, LevelDB etc.</p>
+
+<p>A fundamental property of these data structures is that they are append-only. 
+This is mentioned online in mutliple places, but usually they don’t explain further. I did not immediately understand why a data structure being append-only automatically made it better for writing.</p>
+
+<p>After reading <a href="https://dataintensive.net/">DDIA</a> [1] and looking it up, I understood that it has entirely to do with the underlying storage. 
+There are 2 main types of disk storage used now-a-days. On both types, append-only writes are entirely <strong>sequential writes</strong> as opposed to <strong>random writes</strong>.</p>
+
+<h4 id="magnetic-disk-drives-hdds">Magnetic Disk Drives (HDDs):</h4>
+
+<p>On HDDs, we have a read-write head that seeks to the specific locations and writes. For random writes, the head needs to do a lot more seeking. But for sequential writes, this seek time is reduced drastically. This directly results in a higher write througput as I/O bandwidth is not being wasted for unnecessary operations.</p>
+
+<h4 id="solid-state-drives-ssds">Solid State Drives (SSDs):</h4>
+
+<p>For SSDs as well, log structured data structures like <a href="https://en.wikipedia.org/wiki/Log-structured_merge-tree">LSM-trees</a> achieve high write throughput. But this is for entirely different reasons than HDDs.
+Unlike HDDs, most SSDs do not support incrementally updating a page on the disk. Due to the way flash works, before we update a page, we need to read it, update the value, erase the entire block and write the updated page. Each page is around 4-8 kilobytes in size. This phenomena is called <a href="wa">Write Amplification</a> [2], when one logical write or update causes multiple writes on the underlying storage system. This <a href="ssd">article</a> [3] goes in-depth explaining why this limitation of flash storage exists.</p>
+
+<p>Append-Only helps here because it allows the database to fill in a page completely with rows of data and write it to SSD at once. This reduces write amplification because all the new writes/appends go to a single page on disk reducing the impact of an Erase-Write cycle.</p>
+
+<p><br />
+To conclude, writing is an expensive operation when compared to reading. The best we can do is to use append-only as it’s the simplest write possible due to how our current storage systems work. This is where traditional B+Trees don’t hold up and newer data structures like LSM-trees and their variations are centered around append-only to support higher write throughputs.</p>
+
+<h3 id="references">References:</h3>
+<ul>
+  <li>[1] <a href="https://dataintensive.net/">https://dataintensive.net/</a></li>
+  <li>[2] <a href="https://en.wikipedia.org/wiki/Write_amplification">https://en.wikipedia.org/wiki/Write_amplification</a></li>
+  <li>[3] <a href="https://codecapsule.com/2014/02/12/coding-for-ssds-part-3-pages-blocks-and-the-flash-translation-layer/">https://codecapsule.com/2014/02/12/coding-for-ssds-part-3-pages-blocks-and-the-flash-translation-layer/</a></li>
+</ul>
+
+
+          </div>
+	  <!--
+          <div class="article-share">
+            
+            
+            <a href="https://twitter.com/home?status=Why+append-only+writes+are+much+faster+than+random+writes%20-%20https://pavan-kalyan.dev/posts/why-append-only-writes-are-much-faster-than-random-writes" title="Share on Twitter" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6 -18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6 0.8 15 2.5 22.1 -80.5-4-151.9-42.6-199.6-101.3 -8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.2 63.3 43.2 80.7C67 210.7 52 206.3 39 199c0 0.4 0 0.8 0 1.2 0 47 33.4 86.1 77.7 95 -8.1 2.2-16.7 3.4-25.5 3.4 -6.2 0-12.3-0.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3 -33.1 26-74.9 41.5-120.3 41.5 -7.8 0-15.5-0.5-23.1-1.4C62.8 432 113.7 448 168.3 448 346.6 448 444 300.3 444 172.2c0-4.2-0.1-8.4-0.3-12.5C462.6 146 479 129 492 109.5z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://pavan-kalyan.dev/posts/why-append-only-writes-are-much-faster-than-random-writes" title="Share on Facebook" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M288 192v-38.1c0-17.2 3.8-25.9 30.5-25.9H352V64h-55.9c-68.5 0-91.1 31.4-91.1 85.3V192h-45v64h45v192h83V256h56.4l7.6-64H288z"/></svg>
+            </a>
+          </div>
+
+	  -->
+          
+        </article>
         <footer class="footer ">
   <p>
   This is a technical blog, where I write about various things I learn or want to share.
