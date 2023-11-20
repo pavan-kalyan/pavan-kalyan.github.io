@@ -19,6 +19,7 @@ yarn install --modules-folder ./_assets/yarn
 bundle exec jekyll build --config _config.yml,_secret.yml
 
 # Delete and move files.
+# TODO: why is the _secret file always being deleted???????
 find . -maxdepth 1 ! -name '_site' ! -name '.git' ! -name '.gitignore' ! -name '_secret.yml' -exec rm -rf {} \;
 mv _site/* .
 rm -R _site/

@@ -2,7 +2,7 @@
 layout: post
 title:  "Tips on DP + Bitmasking for competitive programming"
 date:   2023-07-02 00:00:00 +0530
-excerpt: "Quick reference to the complexity and constraint chart with a few tips"
+excerpt: ""
 author: Pavan Kalyan Damalapati
 tags: [cp]
 ---
