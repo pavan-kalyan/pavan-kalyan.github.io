@@ -1,16 +1,60 @@
 name: Build and deploy Jekyll site to GitHub Pages
 
 on:
-        push:
-                branches:
-                        - master
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
 
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-        github-pages:
-                runs-on: ubuntu-latest
-                steps:
-                        - uses: actions/checkout@v2
-                        - uses: helaili/jekyll-action@v2
-                          with:
-                                  token: ${{ secrets.GITHUB_TOKEN }}
+  build:
+    runs-on: ubuntu-latest
+    env:
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+    steps:
+      - uses: actions/checkout@v4
+
+      # execjs (used by uglifier and autoprefixer-rails) needs a JavaScript runtime.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Build site
+        run: bundle exec jekyll build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: _site
+
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./_site
+          cname: pavan-kalyan.dev
+          full_commit_message: ${{ github.event.head_commit.message }} [ci skip]
